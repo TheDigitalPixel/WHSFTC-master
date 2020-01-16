@@ -69,37 +69,37 @@ public class TeleOP extends LinearOpMode{
             double c3=v3*0.5;
             double c4=v4*0.5;
 
-            double WheelBL= motorWheelBL.getPower();
-            double WheelBR= motorWheelBR.getPower();
-            double WheelFL= motorWheelFL.getPower();
-            double WheelFR= motorWheelFR.getPower();
+//            double WheelBL= motorWheelBL.getPower();
+//            double WheelBR= motorWheelBR.getPower();
+//            double WheelFL= motorWheelFL.getPower();
+//            double WheelFR= motorWheelFR.getPower();
+//
+//            double errorBL= c1-WheelBL;
+//            double errorBR= c2-WheelBR;
+//            double errorFL= c3-WheelFL;
+//            double errorFR= c4-WheelFR;
+//
+//            double KP= 0.8;
 
-            double errorBL= c1-WheelBL;
-            double errorBR= c2-WheelBR;
-            double errorFL= c3-WheelFL;
-            double errorFR= c4-WheelFR;
-
-            double KP= 0.8;
-
-            boolean PID = gamepad1.left_stick_button;
-            if(PID){
-                if(timer3 > 100) {
-                    runPID = !runPID;
-                    timer3 = 0;
-                }
-            }
-            if(runPID){
-                V1=v1;
-                V2=v2;
-                V3=v3;
-                V4=v4;
-            }
-            else{
-                V1= c1 + KP*errorBL;
-                V2= c2 + KP*errorBR;
-                V3= c3 + KP*errorFL;
-                V4= c4 + KP*errorFR;
-            }
+//            boolean PID = gamepad1.left_stick_button;
+//            if(PID){
+//                if(timer3 > 100) {
+//                    runPID = !runPID;
+//                    timer3 = 0;
+//                }
+//            }
+//            if(runPID){
+                V1=c1;
+                V2=c2;
+                V3=c3;
+                V4=c4;
+//            }
+//            else{
+//                V1= c1 + KP*errorBL;
+//                V2= c2 + KP*errorBR;
+//                V3= c3 + KP*errorFL;
+//                V4= c4 + KP*errorFR;
+//            }
 
 
 
