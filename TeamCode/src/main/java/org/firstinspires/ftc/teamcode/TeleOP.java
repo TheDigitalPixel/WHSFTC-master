@@ -13,8 +13,8 @@ public class TeleOP extends LinearOpMode{
     private DcMotor motorWheelBL;
     private DcMotor motorWheelBR;
     private Servo servoClamp;
-    private Servo servoTray;
     private DcMotor motorLift;
+    private DcMotor motorTray;
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -24,7 +24,7 @@ public class TeleOP extends LinearOpMode{
         motorWheelBR = hardwareMap.get(DcMotor.class, "motorWheelBR");
         motorLift = hardwareMap.get(DcMotor.class, "motorLift");
         servoClamp = hardwareMap.get(Servo.class, "servoClamp");
-        servoTray = hardwareMap.get(Servo.class, "servoTray");
+        motorTray = hardwareMap.get(DcMotor.class, "motorTray");
 
 	    motorWheelFL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorWheelFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -36,6 +36,8 @@ public class TeleOP extends LinearOpMode{
         motorWheelBR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorLift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorLift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        motorTray.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        motorTray.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
 
 //	telemetry.addData("Status", "Initialized");
@@ -126,7 +128,7 @@ public class TeleOP extends LinearOpMode{
             boolean tray = this.gamepad1.a;
             motorLift.setPower(liftUp-liftDown);
             if(clamp){
-                if(timer1 > 100) {
+                if(timer1 > 200) {
                     close = !close;
                     timer1 = 0;
                 }
@@ -139,16 +141,16 @@ public class TeleOP extends LinearOpMode{
             }
 
             if(tray){
-                if(timer2 > 100) {
+                if(timer2 > 200) {
                     trayClose = !trayClose;
                     timer2 = 0;
                 }
             }
             if(trayClose){
-                servoTray.setPosition(0.25);
+                motorTray.setTargetPosition(90);
             }
             else{
-                servoTray.setPosition(1);
+                motorTray.setTargetPosition(360);
             }
             timer1++;
             timer2++;
