@@ -15,7 +15,6 @@ public class TeleOP extends LinearOpMode{
     private Servo servoClamp;
     private Servo servoTray;
     private DcMotor motorLift;
-    //hello
 
     @Override
     public void runOpMode() throws InterruptedException {
