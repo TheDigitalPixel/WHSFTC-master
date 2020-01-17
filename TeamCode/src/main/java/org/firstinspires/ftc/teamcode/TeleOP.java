@@ -129,7 +129,7 @@ public class TeleOP extends LinearOpMode{
             boolean trayUp = this.gamepad1.b;
             motorLift.setPower(liftUp-liftDown);
             if(clamp){
-                if(timer1 > 100) {
+                if(timer1 > 600) {
                     close = !close;
                     timer1 = 0;
                 }
@@ -138,7 +138,7 @@ public class TeleOP extends LinearOpMode{
                 servoClamp.setPosition(1);
             }
             else{
-                servoClamp.setPosition(0.1);
+                servoClamp.setPosition(0);
             }
 
 //            if(trayDown){
@@ -148,10 +148,10 @@ public class TeleOP extends LinearOpMode{
 //                }
 //            }
             if(trayDown){
-                motorTray.setPower(-0.05);
+                motorTray.setPower(0.05);
             }
             else if(trayUp){
-                motorTray.setPower(0.05);
+                motorTray.setPower(-0.05);
             }
             else{
                 motorTray.setPower(0);
