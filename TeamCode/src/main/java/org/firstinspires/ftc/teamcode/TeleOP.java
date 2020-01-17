@@ -128,7 +128,7 @@ public class TeleOP extends LinearOpMode{
             boolean tray = this.gamepad1.a;
             motorLift.setPower(liftUp-liftDown);
             if(clamp){
-                if(timer1 > 200) {
+                if(timer1 > 150) {
                     close = !close;
                     timer1 = 0;
                 }
@@ -141,7 +141,7 @@ public class TeleOP extends LinearOpMode{
             }
 
             if(tray){
-                if(timer2 > 200) {
+                if(timer2 > 150) {
                     trayClose = !trayClose;
                     timer2 = 0;
                 }
