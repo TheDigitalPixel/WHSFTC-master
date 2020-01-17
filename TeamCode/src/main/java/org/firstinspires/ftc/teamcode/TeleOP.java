@@ -147,10 +147,10 @@ public class TeleOP extends LinearOpMode{
                 }
             }
             if(trayClose){
-                motorTray.setTargetPosition(90);
+                motorTray.setTargetPosition(-135);
             }
             else{
-                motorTray.setTargetPosition(360);
+                motorTray.setTargetPosition(0);
             }
             timer1++;
             timer2++;
