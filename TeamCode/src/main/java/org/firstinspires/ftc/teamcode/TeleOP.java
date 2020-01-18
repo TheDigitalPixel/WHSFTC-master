@@ -44,11 +44,7 @@ public class TeleOP extends LinearOpMode{
 //        telemetry.update();
         // Wait for the game to start (driver presses PLAY)
         boolean close =false;
-        boolean trayClose=false;
-        boolean runPID=false;
         double timer1 = 0;
-//        int timer2 = 0;
-//        int timer3 = 0;
         double V1;
         double V2;
         double V3;
@@ -141,12 +137,6 @@ public class TeleOP extends LinearOpMode{
                 servoClamp.setPosition(0);
             }
 
-//            if(trayDown){
-//                if(timer2 > 150) {
-//                    trayClose = !trayClose;
-//                    timer2 = 0;
-//                }
-//            }
             if(trayDown){
                 motorTray.setPower(0.05);
             }
@@ -156,9 +146,6 @@ public class TeleOP extends LinearOpMode{
             else{
                 motorTray.setPower(0);
             }
-//            timer2++;
-//            timer3++;
-
         }
     }
 }
