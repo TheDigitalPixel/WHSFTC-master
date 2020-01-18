@@ -52,31 +52,48 @@ public class AutonomousDrive extends LinearOpMode {
             motorWheelFR.setPower(-0.5);
             motorWheelBL.setPower(0.5);
             motorWheelBR.setPower(-0.5);
-            sleep(2000);
+            sleep(1700);
             motorWheelFL.setPower(0);
             motorWheelFR.setPower(0);
             motorWheelBL.setPower(0);
             motorWheelBR.setPower(0);
+            sleep(100);
 
             motorWheelFL.setPower(0.5);
-            motorWheelFR.setPower(-0.5);
+            motorWheelFR.setPower(0.5);
             motorWheelBL.setPower(-0.5);
-            motorWheelBR.setPower(0.5);
-            sleep(500);
+            motorWheelBR.setPower(-0.5);
+            sleep(1000);
             motorWheelFL.setPower(0);
             motorWheelFR.setPower(0);
             motorWheelBL.setPower(0);
             motorWheelBR.setPower(0);
+            sleep(100);
 
-            motorTray.setPower(0.5);
-            sleep(10);
+            motorTray.setPower(0.1);
+            sleep(600);
             motorTray.setPower(0);
 
             motorWheelFL.setPower(-0.5);
             motorWheelFR.setPower(0.5);
             motorWheelBL.setPower(-0.5);
             motorWheelBR.setPower(0.5);
-            sleep(2000);
+            sleep(1700);
+            motorWheelFL.setPower(0);
+            motorWheelFR.setPower(0);
+            motorWheelBL.setPower(0);
+            motorWheelBR.setPower(0);
+            sleep(100);
+
+            motorTray.setPower(-0.1);
+            sleep(600);
+            motorTray.setPower(0);
+
+            motorWheelFL.setPower(-0.5);
+            motorWheelFR.setPower(-0.5);
+            motorWheelBL.setPower(0.5);
+            motorWheelBR.setPower(0.5);
+            sleep(1500);
             motorWheelFL.setPower(0);
             motorWheelFR.setPower(0);
             motorWheelBL.setPower(0);
