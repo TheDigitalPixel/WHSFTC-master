@@ -13,6 +13,7 @@ public class AutonomousDrive extends LinearOpMode {
     private DcMotor motorWheelFR;
     private DcMotor motorWheelBL;
     private DcMotor motorWheelBR;
+    private DcMotor motorTray;
 
 //    private final double drivePidKp = 1;     // Tuning variable for PID.
 //    private final double drivePidTi = 1.0;   // Eliminate integral error in 1 sec.
@@ -28,27 +29,54 @@ public class AutonomousDrive extends LinearOpMode {
         motorWheelFR = hardwareMap.get(DcMotor.class, "motorWheelFR");
         motorWheelBL = hardwareMap.get(DcMotor.class, "motorWheelBL");
         motorWheelBR = hardwareMap.get(DcMotor.class, "motorWheelBR");
+        motorTray = hardwareMap.get(DcMotor.class, "motorTray");
 
         motorWheelFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorWheelFR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorWheelBL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorWheelBR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        motorTray.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         motorWheelFL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorWheelFR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorWheelBL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorWheelBR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        motorTray.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         telemetry.addData("Status", "Initialized");
         telemetry.update();
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
         if (opModeIsActive()) {
+            motorWheelFL.setPower(0.5);
+            motorWheelFR.setPower(-0.5);
+            motorWheelBL.setPower(0.5);
+            motorWheelBR.setPower(-0.5);
+            sleep(2000);
+            motorWheelFL.setPower(0);
+            motorWheelFR.setPower(0);
+            motorWheelBL.setPower(0);
+            motorWheelBR.setPower(0);
+
+            motorWheelFL.setPower(0.5);
+            motorWheelFR.setPower(-0.5);
+            motorWheelBL.setPower(-0.5);
+            motorWheelBR.setPower(0.5);
+            sleep(1000);
+            motorWheelFL.setPower(0);
+            motorWheelFR.setPower(0);
+            motorWheelBL.setPower(0);
+            motorWheelBR.setPower(0);
+
+            motorTray.setPower(0.5);
+            sleep(10);
+            motorTray.setPower(0);
+
             motorWheelFL.setPower(-0.5);
             motorWheelFR.setPower(0.5);
             motorWheelBL.setPower(-0.5);
             motorWheelBR.setPower(0.5);
-            sleep(1000);
+            sleep(2000);
             motorWheelFL.setPower(0);
             motorWheelFR.setPower(0);
             motorWheelBL.setPower(0);
