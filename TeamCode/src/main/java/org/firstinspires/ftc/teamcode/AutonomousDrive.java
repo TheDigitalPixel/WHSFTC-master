@@ -62,7 +62,7 @@ public class AutonomousDrive extends LinearOpMode {
             motorWheelFR.setPower(-0.5);
             motorWheelBL.setPower(-0.5);
             motorWheelBR.setPower(0.5);
-            sleep(1000);
+            sleep(500);
             motorWheelFL.setPower(0);
             motorWheelFR.setPower(0);
             motorWheelBL.setPower(0);
