@@ -5,13 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 @Autonomous
-public class AutonomousDriveOneSec extends LinearOpMode {
-
-    private DcMotor motorWheelFL;
-    private DcMotor motorWheelFR;
-    private DcMotor motorWheelBL;
-    private DcMotor motorWheelBR;
-    private DcMotor motorTray;
+public class AutonomousDriveOneSec extends AutonomousDriveBase {
 
 //    private final double drivePidKp = 1;     // Tuning variable for PID.
 //    private final double drivePidTi = 1.0;   // Eliminate integral error in 1 sec.
@@ -22,30 +16,8 @@ public class AutonomousDriveOneSec extends LinearOpMode {
 
 
     @Override
-    public void runOpMode() throws InterruptedException {
-        motorWheelFL = hardwareMap.get(DcMotor.class, "motorWheelFL");
-        motorWheelFR = hardwareMap.get(DcMotor.class, "motorWheelFR");
-        motorWheelBL = hardwareMap.get(DcMotor.class, "motorWheelBL");
-        motorWheelBR = hardwareMap.get(DcMotor.class, "motorWheelBR");
-        motorTray = hardwareMap.get(DcMotor.class, "motorTray");
+    public void Run() throws InterruptedException {
 
-        motorWheelFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        motorWheelFR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        motorWheelBL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        motorWheelBR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        motorTray.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-
-        motorWheelFL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        motorWheelFR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        motorWheelBL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        motorWheelBR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        motorTray.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-        telemetry.addData("Status", "Initialized");
-        telemetry.update();
-        // Wait for the game to start (driver presses PLAY)
-        waitForStart();
-        if (opModeIsActive()) {
             motorWheelFL.setPower(-0.5);
             motorWheelFR.setPower(0.5);
             motorWheelBL.setPower(-0.5);
@@ -55,6 +27,5 @@ public class AutonomousDriveOneSec extends LinearOpMode {
             motorWheelFR.setPower(0);
             motorWheelBL.setPower(0);
             motorWheelBR.setPower(0);
-        }
     }
 }
