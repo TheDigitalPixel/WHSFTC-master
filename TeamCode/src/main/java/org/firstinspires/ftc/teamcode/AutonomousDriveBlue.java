@@ -5,14 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 @Autonomous
-public class AutonomousDriveBlue extends LinearOpMode {
-
-    private DcMotor motorWheelFL;
-    private DcMotor motorWheelFR;
-    private DcMotor motorWheelBL;
-    private DcMotor motorWheelBR;
-    private DcMotor motorTray;
-    private DcMotor motorLift;
+public class AutonomousDriveBlue extends AutonomousDriveBase {
 
 //    private final double drivePidKp = 1;     // Tuning variable for PID.
 //    private final double drivePidTi = 1.0;   // Eliminate integral error in 1 sec.
@@ -23,33 +16,7 @@ public class AutonomousDriveBlue extends LinearOpMode {
 
 
     @Override
-    public void runOpMode() throws InterruptedException {
-        motorWheelFL = hardwareMap.get(DcMotor.class, "motorWheelFL");
-        motorWheelFR = hardwareMap.get(DcMotor.class, "motorWheelFR");
-        motorWheelBL = hardwareMap.get(DcMotor.class, "motorWheelBL");
-        motorWheelBR = hardwareMap.get(DcMotor.class, "motorWheelBR");
-        motorTray = hardwareMap.get(DcMotor.class, "motorTray");
-        motorLift = hardwareMap.get(DcMotor.class, "motorLift");
-
-        motorWheelFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        motorWheelFR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        motorWheelBL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        motorWheelBR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        motorTray.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        motorLift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-
-        motorWheelFL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        motorWheelFR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        motorWheelBL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        motorWheelBR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        motorTray.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        motorLift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-        telemetry.addData("Status", "Initialized");
-        telemetry.update();
-        // Wait for the game to start (driver presses PLAY)
-        waitForStart();
-        if (opModeIsActive()) {
+    public void Run() throws InterruptedException {
             motorLift.setPower(0.5);
             sleep(600);
             motorLift.setPower(0);
@@ -131,6 +98,5 @@ public class AutonomousDriveBlue extends LinearOpMode {
             motorWheelFR.setPower(0);
             motorWheelBL.setPower(0);
             motorWheelBR.setPower(0);
-        }
     }
 }
