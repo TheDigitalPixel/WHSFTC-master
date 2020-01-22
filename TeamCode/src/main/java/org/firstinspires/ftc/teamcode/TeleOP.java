@@ -15,6 +15,7 @@ public class TeleOP extends LinearOpMode{
     private Servo servoClamp;
     private DcMotor motorLift;
     private DcMotor motorTray;
+    private DcMotor motorTray2;
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -25,6 +26,7 @@ public class TeleOP extends LinearOpMode{
         motorLift = hardwareMap.get(DcMotor.class, "motorLift");
         servoClamp = hardwareMap.get(Servo.class, "servoClamp");
         motorTray = hardwareMap.get(DcMotor.class, "motorTray");
+        motorTray2 = hardwareMap.get(DcMotor.class, "motorTray2");
 
 	    motorWheelFL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorWheelFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -38,6 +40,8 @@ public class TeleOP extends LinearOpMode{
         motorLift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorTray.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorTray.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        motorTray2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        motorTray2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
 
 //	telemetry.addData("Status", "Initialized");
@@ -138,13 +142,16 @@ public class TeleOP extends LinearOpMode{
             }
 
             if(trayDown){
-                motorTray.setPower(0.05);
+                motorTray.setPower(0.1);
+                motorTray2.setPower(-0.1);
             }
             else if(trayUp){
-                motorTray.setPower(-0.05);
+                motorTray.setPower(-0.1);
+                motorTray2.setPower(0.1);
             }
             else{
                 motorTray.setPower(0);
+                motorTray2.setPower(0);
             }
         }
     }
