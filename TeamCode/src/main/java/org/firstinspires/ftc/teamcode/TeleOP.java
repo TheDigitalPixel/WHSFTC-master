@@ -1,12 +1,13 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp
-public class TeleOP extends LinearOpMode{
+public class TeleOP extends OpMode{
 
     private DcMotor motorWheelFL;
     private DcMotor motorWheelFR;
@@ -16,9 +17,15 @@ public class TeleOP extends LinearOpMode{
     private DcMotor motorLift;
     private DcMotor motorTray;
     private DcMotor motorTray2;
+    private double V1;
+    private double V2;
+    private double V3;
+    private double V4;
+    private boolean close;
+    private double timer1;
 
     @Override
-    public void runOpMode() throws InterruptedException {
+    public void init() {
         motorWheelFL = hardwareMap.get(DcMotor.class, "motorWheelFL");
         motorWheelFR = hardwareMap.get(DcMotor.class, "motorWheelFR");
         motorWheelBL = hardwareMap.get(DcMotor.class, "motorWheelBL");
@@ -28,7 +35,7 @@ public class TeleOP extends LinearOpMode{
         motorTray = hardwareMap.get(DcMotor.class, "motorTray");
         motorTray2 = hardwareMap.get(DcMotor.class, "motorTray2");
 
-	    motorWheelFL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        motorWheelFL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorWheelFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorWheelFR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorWheelFR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -43,19 +50,17 @@ public class TeleOP extends LinearOpMode{
         motorTray2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorTray2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
+        close = false;
+        timer1 = 0;
+    }
 
 //	telemetry.addData("Status", "Initialized");
 //        telemetry.update();
         // Wait for the game to start (driver presses PLAY)
-        boolean close =false;
-        double timer1 = 0;
-        double V1;
-        double V2;
-        double V3;
-        double V4;
-        waitForStart();
+
         // run until the end of the match (driver presses STOP)
-        while (opModeIsActive()) {
+        @Override
+        public void loop() {
 //            telemetry.addData("Status", "Running");
 
             double r = Math.hypot(gamepad1.left_stick_x, gamepad1.left_stick_y);
@@ -155,4 +160,4 @@ public class TeleOP extends LinearOpMode{
             }
         }
     }
-}
+
