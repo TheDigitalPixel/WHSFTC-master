@@ -1,6 +1,5 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -52,11 +51,12 @@ public class TeleOP extends OpMode{
 
         close = false;
         timer1 = 0;
-    }
-
-//	telemetry.addData("Status", "Initialized");
+        //	telemetry.addData("Status", "Initialized");
 //        telemetry.update();
         // Wait for the game to start (driver presses PLAY)
+    }
+
+
 
         // run until the end of the match (driver presses STOP)
         @Override
