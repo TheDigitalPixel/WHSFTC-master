@@ -26,6 +26,18 @@ public class AutonomousDriveBase extends LinearOpMode {
     public void Run()throws InterruptedException {
 
     }
+
+    public void Move(double FL, double FR, double BL, double BR, int time) throws InterruptedException{
+        motorWheelFL.setPower(FL);
+        motorWheelFR.setPower(FR);
+        motorWheelBL.setPower(BL);
+        motorWheelBR.setPower(BR);
+        sleep(time);
+        motorWheelFL.setPower(0);
+        motorWheelFR.setPower(0);
+        motorWheelBL.setPower(0);
+        motorWheelBR.setPower(0);
+    }
     @Override
     public void runOpMode() throws InterruptedException {
         motorWheelFL = hardwareMap.get(DcMotor.class, "motorWheelFL");
