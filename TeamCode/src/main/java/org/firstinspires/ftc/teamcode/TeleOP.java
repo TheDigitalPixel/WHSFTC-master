@@ -34,6 +34,7 @@ public class TeleOP extends OpMode {
     private double timer1;
     private double timer2;
     private double servoPower;
+    private int collectionState;
     //private double timer3;
 
     @Override
@@ -73,6 +74,7 @@ public class TeleOP extends OpMode {
 
         trayDown = false;
         blockGrabbed = false;
+        collectionState = 0;
         timer1 = 0;
         timer2 = 0;
         //	telemetry.addData("Status", "Initialized");
@@ -180,6 +182,13 @@ public class TeleOP extends OpMode {
             } else {
                 servoPower = 0;
             }
+            if(this.gamepad1.x) {
+                collectionState = 1;
+            } else if(this.gamepad1.y) {
+                collectionState = 2;
+            } else {
+                collectionState = 0;
+            }
             /*
             if(close){
                 servoClamp.setPosition(1);
@@ -190,27 +199,41 @@ public class TeleOP extends OpMode {
 
              */
             servoExtend.setPower(servoPower);
-            collectionWheelsL.setPower(0.1);
-            collectionWheelsR.setPower(-0.1);
-            servoWheelOne.setPower(0.1);
-            servoWheelTwo.setPower(-0.1);
-            if(trayDown){
+            //if(trayDown){
 //                trayOne.setPosition(1);
 //                trayTwo.setPosition(1);
                 //motorTray.setPower(0.1);
                 //motorTray2.setPower(-0.1);
-            } else {
+            //} else {
 //                trayOne.setPosition(0);
 //                trayTwo.setPosition(0);
                 //motorTray.setPower(-0.1);
                 //motorTray2.setPower(0.1);
-            }
+            //}
             if(blockGrabbed) {
                 servoClamp.setPosition(1);
 
             } else {
                 servoClamp.setPosition(0);
             }
+
+            if(collectionState == 1) {
+                collectionWheelsL.setPower(0.7);
+                collectionWheelsR.setPower(0.7);
+                servoWheelOne.setPower(0.7);
+                servoWheelTwo.setPower(0.7);
+            } else if(collectionState == 2) {
+                collectionWheelsL.setPower(-0.7);
+                collectionWheelsR.setPower(-0.7);
+                servoWheelOne.setPower(-0.7);
+                servoWheelTwo.setPower(-0.7);
+            } else {
+                collectionWheelsL.setPower(0);
+                collectionWheelsR.setPower(0);
+                servoWheelOne.setPower(0);
+                servoWheelTwo.setPower(0);
+            }
+
             /*
             else{
                 motorTray.setPower(0);
