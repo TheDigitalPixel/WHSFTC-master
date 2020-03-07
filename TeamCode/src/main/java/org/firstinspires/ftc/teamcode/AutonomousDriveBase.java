@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DistanceSensor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 @Autonomous
@@ -15,6 +16,11 @@ public class AutonomousDriveBase extends LinearOpMode {
     protected DcMotor motorWheelBR;
     protected DcMotor motorTray;
     protected DcMotor motorLift;
+    protected DistanceSensor sensorDistanceFront;
+    protected DistanceSensor sensorDistanceRear;
+    protected DistanceSensor sensorDistanceLeft;
+    protected DistanceSensor sensorDistanceRight;
+
 
 //    private final double drivePidKp = 1;     // Tuning variable for PID.
 //    private final double drivePidTi = 1.0;   // Eliminate integral error in 1 sec.
@@ -46,6 +52,10 @@ public class AutonomousDriveBase extends LinearOpMode {
         motorWheelBR = hardwareMap.get(DcMotor.class, "motorWheelBR");
         motorTray = hardwareMap.get(DcMotor.class, "motorTray");
         motorLift = hardwareMap.get(DcMotor.class, "motorLift");
+        sensorDistanceFront = hardwareMap.get(DistanceSensor.class, "sensorDistanceFront");
+        sensorDistanceRear = hardwareMap.get(DistanceSensor.class, "sensorDistanceRear");
+        sensorDistanceLeft = hardwareMap.get(DistanceSensor.class, "sensorDistanceLeft");
+        sensorDistanceRight = hardwareMap.get(DistanceSensor.class, "sensorDistanceRight");
 
         motorWheelFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorWheelFR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
