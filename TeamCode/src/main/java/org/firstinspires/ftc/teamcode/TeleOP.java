@@ -2,17 +2,22 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp
-public class TeleOP extends OpMode{
+public class TeleOP extends OpMode {
 
     private DcMotor motorWheelFL;
     private DcMotor motorWheelFR;
     private DcMotor motorWheelBL;
     private DcMotor motorWheelBR;
-    private Servo servoClamp;
+    //private Servo servoClamp;
+    private Servo trayOne;
+    private Servo trayTwo;
+    private Servo cockAndBallTorture;
+    private CRServo benis;
     private DcMotor motorLift;
     private DcMotor motorTray;
     private DcMotor motorTray2;
@@ -20,8 +25,10 @@ public class TeleOP extends OpMode{
     private double V2;
     private double V3;
     private double V4;
-    private boolean close;
+    private boolean trayDown;
+    private boolean blockGrabbed;
     private double timer1;
+    private double timer2;
 
     @Override
     public void init() {
@@ -30,7 +37,11 @@ public class TeleOP extends OpMode{
         motorWheelBL = hardwareMap.get(DcMotor.class, "motorWheelBL");
         motorWheelBR = hardwareMap.get(DcMotor.class, "motorWheelBR");
         motorLift = hardwareMap.get(DcMotor.class, "motorLift");
-        servoClamp = hardwareMap.get(Servo.class, "servoClamp");
+        //servoClamp = hardwareMap.get(Servo.class, "servoClamp");
+        trayOne = hardwareMap.get(Servo.class, "trayOne");
+        trayTwo = hardwareMap.get(Servo.class, "trayTwo");
+        cockAndBallTorture = hardwareMap.get(Servo.class, "cockAndBallTorture");
+        benis = hardwareMap.get(CRServo.class, "benis");
         motorTray = hardwareMap.get(DcMotor.class, "motorTray");
         motorTray2 = hardwareMap.get(DcMotor.class, "motorTray2");
 
@@ -49,8 +60,10 @@ public class TeleOP extends OpMode{
         motorTray2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorTray2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        close = false;
+        trayDown = false;
+        blockGrabbed = false;
         timer1 = 0;
+        timer2 = 0;
         //	telemetry.addData("Status", "Initialized");
 //        telemetry.update();
         // Wait for the game to start (driver presses PLAY)
@@ -129,16 +142,25 @@ public class TeleOP extends OpMode{
 
             float liftDown = this.gamepad1.left_trigger;
             float liftUp = this.gamepad1.right_trigger;
-            boolean clamp = this.gamepad1.right_bumper;
-            boolean trayDown = this.gamepad1.a;
-            boolean trayUp = this.gamepad1.b;
+            boolean tray = this.gamepad1.right_bumper;
+            boolean grab = this.gamepad1.left_bumper;
+            //boolean trayDown = this.gamepad1.a;
+            //boolean trayUp = this.gamepad1.b;
             motorLift.setPower(liftUp-liftDown);
-            if(clamp){
+            if(grab) {
+                //Grab me from behind
+                if(getRuntime()-timer2 > 0.5) {
+                    blockGrabbed = !blockGrabbed;
+                    timer2 = getRuntime();
+                }
+            }
+            if(tray){
                 if(getRuntime()-timer1 > 0.5) {
-                    close = !close;
+                    trayDown = !trayDown;
                     timer1 = getRuntime();
                 }
             }
+            /*
             if(close){
                 servoClamp.setPosition(1);
             }
@@ -146,18 +168,25 @@ public class TeleOP extends OpMode{
                 servoClamp.setPosition(0);
             }
 
+             */
             if(trayDown){
-                motorTray.setPower(0.1);
-                motorTray2.setPower(-0.1);
+                trayOne.setPosition(1);
+                trayTwo.setPosition(1);
+                //motorTray.setPower(0.1);
+                //motorTray2.setPower(-0.1);
+            } else {
+                trayOne.setPosition(0);
+                trayTwo.setPosition(0);
+                //motorTray.setPower(-0.1);
+                //motorTray2.setPower(0.1);
             }
-            else if(trayUp){
-                motorTray.setPower(-0.1);
-                motorTray2.setPower(0.1);
-            }
+            /*
             else{
                 motorTray.setPower(0);
                 motorTray2.setPower(0);
             }
+
+             */
         }
     }
 
