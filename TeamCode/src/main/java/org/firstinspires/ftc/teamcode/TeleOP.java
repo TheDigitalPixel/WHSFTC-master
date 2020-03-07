@@ -16,8 +16,8 @@ public class TeleOP extends OpMode {
     //private Servo servoClamp;
     private Servo trayOne;
     private Servo trayTwo;
-    private Servo cockAndBallTorture;
-    private CRServo hentai;
+    private Servo servoClamp;
+    private CRServo servoExtend;
     private CRServo servoWheelOne;
     private CRServo servoWheelTwo;
     private DcMotor motorLift;
@@ -46,8 +46,8 @@ public class TeleOP extends OpMode {
         //servoClamp = hardwareMap.get(Servo.class, "servoClamp");
         trayOne = hardwareMap.get(Servo.class, "trayOne");
         trayTwo = hardwareMap.get(Servo.class, "trayTwo");
-        cockAndBallTorture = hardwareMap.get(Servo.class, "cockAndBallTorture");
-        hentai = hardwareMap.get(CRServo.class, "hentai");
+        servoClamp = hardwareMap.get(Servo.class, "cockAndBallTorture");
+        servoExtend = hardwareMap.get(CRServo.class, "hentai");
         servoWheelOne = hardwareMap.get(CRServo.class, "servoWheelOne");
         servoWheelTwo = hardwareMap.get(CRServo.class, "servoWheelTwo");
         collectionWheelsL = hardwareMap.get(DcMotor.class, "collectionWheelsL");
@@ -189,7 +189,7 @@ public class TeleOP extends OpMode {
             }
 
              */
-            hentai.setPower(servoPower);
+            servoExtend.setPower(servoPower);
             collectionWheelsL.setPower(0.1);
             collectionWheelsR.setPower(-0.1);
             servoWheelOne.setPower(0.1);
@@ -206,10 +206,10 @@ public class TeleOP extends OpMode {
                 //motorTray2.setPower(0.1);
             }
             if(blockGrabbed) {
-                cockAndBallTorture.setPosition(1);
+                servoClamp.setPosition(1);
 
             } else {
-                cockAndBallTorture.setPosition(0);
+                servoClamp.setPosition(0);
             }
             /*
             else{
