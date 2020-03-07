@@ -29,6 +29,8 @@ public class TeleOP extends OpMode {
     private boolean blockGrabbed;
     private double timer1;
     private double timer2;
+    private double servoPower;
+    //private double timer3;
 
     @Override
     public void init() {
@@ -160,6 +162,14 @@ public class TeleOP extends OpMode {
                     timer1 = getRuntime();
                 }
             }
+            if(this.gamepad1.a) {
+                servoPower = 0.2;
+            } else if(this.gamepad1.b) {
+                servoPower = -0.2;
+
+            } else {
+                servoPower = 0;
+            }
             /*
             if(close){
                 servoClamp.setPosition(1);
@@ -169,6 +179,7 @@ public class TeleOP extends OpMode {
             }
 
              */
+            benis.setPower(servoPower);
             if(trayDown){
                 trayOne.setPosition(1);
                 trayTwo.setPosition(1);
@@ -179,6 +190,12 @@ public class TeleOP extends OpMode {
                 trayTwo.setPosition(0);
                 //motorTray.setPower(-0.1);
                 //motorTray2.setPower(0.1);
+            }
+            if(blockGrabbed) {
+                cockAndBallTorture.setPosition(1);
+
+            } else {
+                cockAndBallTorture.setPosition(0);
             }
             /*
             else{
