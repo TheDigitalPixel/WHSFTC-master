@@ -17,10 +17,14 @@ public class TeleOP extends OpMode {
     private Servo trayOne;
     private Servo trayTwo;
     private Servo cockAndBallTorture;
-    private CRServo benis;
+    private CRServo hentai;
+    private CRServo servoWheelOne;
+    private CRServo servoWheelTwo;
     private DcMotor motorLift;
-    private DcMotor motorTray;
-    private DcMotor motorTray2;
+    private DcMotor collectionWheelsL;
+    private DcMotor collectionWheelsR;
+    //private DcMotor motorTray;
+    //private DcMotor motorTray2;
     private double V1;
     private double V2;
     private double V3;
@@ -43,9 +47,11 @@ public class TeleOP extends OpMode {
         trayOne = hardwareMap.get(Servo.class, "trayOne");
         trayTwo = hardwareMap.get(Servo.class, "trayTwo");
         cockAndBallTorture = hardwareMap.get(Servo.class, "cockAndBallTorture");
-        benis = hardwareMap.get(CRServo.class, "benis");
-        motorTray = hardwareMap.get(DcMotor.class, "motorTray");
-        motorTray2 = hardwareMap.get(DcMotor.class, "motorTray2");
+        hentai = hardwareMap.get(CRServo.class, "hentai");
+        servoWheelOne = hardwareMap.get(CRServo.class, "servoWheelOne");
+        servoWheelTwo = hardwareMap.get(CRServo.class, "servoWheelTwo");
+        collectionWheelsL = hardwareMap.get(DcMotor.class, "collectionWheelsL");
+        collectionWheelsR = hardwareMap.get(DcMotor.class, "collectionWheelsR");
 
         motorWheelFL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorWheelFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -57,10 +63,13 @@ public class TeleOP extends OpMode {
         motorWheelBR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorLift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorLift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        motorTray.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        motorTray.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        motorTray2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        motorTray2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        collectionWheelsR.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        collectionWheelsR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        collectionWheelsL.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        collectionWheelsL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        //motorTray.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        //motorTray2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        //motorTray2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         trayDown = false;
         blockGrabbed = false;
@@ -130,6 +139,7 @@ public class TeleOP extends OpMode {
             motorWheelFL.setPower(V3);
             motorWheelFR.setPower(V4);
 
+
 //            telemetry.addData("FL Motor Power", motorWheelFL.getPower());
 //            telemetry.addData("FR Motor Power", motorWheelFR.getPower());
 //            telemetry.addData("BL Motor Power", motorWheelBL.getPower());
@@ -179,7 +189,11 @@ public class TeleOP extends OpMode {
             }
 
              */
-            benis.setPower(servoPower);
+            hentai.setPower(servoPower);
+            collectionWheelsL.setPower(0.1);
+            collectionWheelsR.setPower(-0.1);
+            servoWheelOne.setPower(0.1);
+            servoWheelTwo.setPower(-0.1);
             if(trayDown){
                 trayOne.setPosition(1);
                 trayTwo.setPosition(1);
