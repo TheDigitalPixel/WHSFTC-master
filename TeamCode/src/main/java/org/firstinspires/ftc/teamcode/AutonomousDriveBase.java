@@ -15,7 +15,7 @@ public class AutonomousDriveBase extends LinearOpMode {
     protected DcMotor motorWheelFR;
     protected DcMotor motorWheelBL;
     protected DcMotor motorWheelBR;
-//    protected DcMotor motorTray;
+    protected DcMotor motorTray;
     protected DcMotor motorLift;
     protected Servo servoClamp;
     protected CRServo servoExtend;
@@ -75,14 +75,14 @@ public class AutonomousDriveBase extends LinearOpMode {
         motorWheelFR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorWheelBL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorWheelBR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-//        motorTray.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        motorTray.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         motorLift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         motorWheelFL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorWheelFR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorWheelBL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorWheelBR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-//        motorTray.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        motorTray.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorLift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         telemetry.addData("Status", "Initialized");
