@@ -14,8 +14,8 @@ public class TeleOP extends OpMode {
     private DcMotor motorWheelBL;
     private DcMotor motorWheelBR;
     //private Servo servoClamp;
-    private Servo trayOne;
-    private Servo trayTwo;
+//    private Servo trayOne;
+//    private Servo trayTwo;
     private Servo servoClamp;
     private CRServo servoExtend;
     private CRServo servoWheelOne;
@@ -44,10 +44,10 @@ public class TeleOP extends OpMode {
         motorWheelBR = hardwareMap.get(DcMotor.class, "motorWheelBR");
         motorLift = hardwareMap.get(DcMotor.class, "motorLift");
         //servoClamp = hardwareMap.get(Servo.class, "servoClamp");
-        trayOne = hardwareMap.get(Servo.class, "trayOne");
-        trayTwo = hardwareMap.get(Servo.class, "trayTwo");
-        servoClamp = hardwareMap.get(Servo.class, "cockAndBallTorture");
-        servoExtend = hardwareMap.get(CRServo.class, "hentai");
+//        trayOne = hardwareMap.get(Servo.class, "trayOne");
+//        trayTwo = hardwareMap.get(Servo.class, "trayTwo");
+        servoClamp = hardwareMap.get(Servo.class, "servoClamp");
+        servoExtend = hardwareMap.get(CRServo.class, "servoExtend");
         servoWheelOne = hardwareMap.get(CRServo.class, "servoWheelOne");
         servoWheelTwo = hardwareMap.get(CRServo.class, "servoWheelTwo");
         collectionWheelsL = hardwareMap.get(DcMotor.class, "collectionWheelsL");
@@ -95,10 +95,10 @@ public class TeleOP extends OpMode {
             final double v3 = r * Math.sin(robotAngle) - rightX;
             final double v4 = -r * Math.cos(robotAngle) - rightX;
 
-            double c1=v1*0.5;
-            double c2=v2*0.5;
-            double c3=v3*0.5;
-            double c4=v4*0.5;
+            double c1=v1*-0.5;
+            double c2=v2*-0.5;
+            double c3=v3*-0.5;
+            double c4=v4*-0.5;
 
 //            double WheelBL= motorWheelBL.getPower();
 //            double WheelBR= motorWheelBR.getPower();
@@ -195,13 +195,13 @@ public class TeleOP extends OpMode {
             servoWheelOne.setPower(0.1);
             servoWheelTwo.setPower(-0.1);
             if(trayDown){
-                trayOne.setPosition(1);
-                trayTwo.setPosition(1);
+//                trayOne.setPosition(1);
+//                trayTwo.setPosition(1);
                 //motorTray.setPower(0.1);
                 //motorTray2.setPower(-0.1);
             } else {
-                trayOne.setPosition(0);
-                trayTwo.setPosition(0);
+//                trayOne.setPosition(0);
+//                trayTwo.setPosition(0);
                 //motorTray.setPower(-0.1);
                 //motorTray2.setPower(0.1);
             }
