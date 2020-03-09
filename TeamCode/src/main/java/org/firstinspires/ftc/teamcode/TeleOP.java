@@ -175,9 +175,9 @@ public class TeleOP extends OpMode {
                 }
             }
             if(this.gamepad1.a) {
-                servoPower = 0.2;
+                servoPower = 0.7;
             } else if(this.gamepad1.b) {
-                servoPower = -0.2;
+                servoPower = -0.7;
 
             } else {
                 servoPower = 0;
@@ -218,15 +218,15 @@ public class TeleOP extends OpMode {
             }
 
             if(collectionState == 1) {
-                collectionWheelsL.setPower(0.7);
-                collectionWheelsR.setPower(0.7);
-                servoWheelOne.setPower(0.7);
-                servoWheelTwo.setPower(0.7);
+                collectionWheelsL.setPower(1);
+                collectionWheelsR.setPower(-1);
+                servoWheelOne.setPower(-1);
+                servoWheelTwo.setPower(1);
             } else if(collectionState == 2) {
-                collectionWheelsL.setPower(-0.7);
-                collectionWheelsR.setPower(-0.7);
-                servoWheelOne.setPower(-0.7);
-                servoWheelTwo.setPower(-0.7);
+                collectionWheelsL.setPower(-1);
+                collectionWheelsR.setPower(1);
+                servoWheelOne.setPower(1);
+                servoWheelTwo.setPower(-1);
             } else {
                 collectionWheelsL.setPower(0);
                 collectionWheelsR.setPower(0);
