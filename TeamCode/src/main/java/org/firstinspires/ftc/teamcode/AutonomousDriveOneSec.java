@@ -18,11 +18,11 @@ public class AutonomousDriveOneSec extends AutonomousDriveBase {
     @Override
     public void Run() throws InterruptedException {
 
-            motorWheelFL.setPower(-0.5);
-            motorWheelFR.setPower(0.5);
-            motorWheelBL.setPower(-0.5);
-            motorWheelBR.setPower(0.5);
-            sleep(1000);
+            motorWheelFL.setPower(0.5);
+            motorWheelFR.setPower(-0.5);
+            motorWheelBL.setPower(0.5);
+            motorWheelBR.setPower(-0.5);
+            sleep(750);
             motorWheelFL.setPower(0);
             motorWheelFR.setPower(0);
             motorWheelBL.setPower(0);
